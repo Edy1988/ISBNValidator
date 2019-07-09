@@ -50,4 +50,13 @@ public class ValidateISBNTest {
 
         assertFalse(result);
     }
+
+    @Test
+     public void valisdISBNthatendsWithAnX(){
+        ValidateISBN validator = new ValidateISBN();
+
+        boolean result = validator.checkISBN("012000030X");
+
+        assertTrue(result);
+    }
 }
