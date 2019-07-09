@@ -7,22 +7,39 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ValidateISBNTest {
 
     @Test
-    public void checkAValidISBNhas10digitsNumberThe10digitCase(){
-        String isbn = "0140449116";
-        assertEquals(10, isbn.length());
+    public void nineDigitsISBNareNotAllowed(){
+       ValidateISBN validatator = new ValidateISBN();
 
+       assertThrows(NumberFormatException.class,
+               () ->{validatator.checkISBN("123456789");}
+               );
     }
 
+    @Test
+    public void elevenDigitsISBNareNotAllowed(){
+        ValidateISBN validatator = new ValidateISBN();
+
+        assertThrows(NumberFormatException.class,
+                () ->{validatator.checkISBN("12345678910");}
+        );
+    }
+
+    @Test
+    public void onlyDigitsAreAllowed(){
+        ValidateISBN validatator = new ValidateISBN();
+
+        assertThrows(NumberFormatException.class,
+                () -> { validatator.checkISBN("helloworld"); }
+        );
+    }
 
     @Test
     public void checkAValidISBNfor10digitNumber(){
         ValidateISBN validator = new ValidateISBN();
+
         boolean result = validator.checkISBN("0140449116");
-        assertTrue(result, "First value ");
 
-        result = validator.checkISBN("0140449116");
-        assertTrue(result, "Second value");
-
+        assertTrue(result);
     }
 
     @Test
