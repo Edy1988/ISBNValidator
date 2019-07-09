@@ -2,10 +2,17 @@ package learningJava;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ValidateISBNTest {
+
+    @Test
+    public void checkAValidISBNhas10digitsNumberThe10digitCase(){
+        String isbn = "0140449116";
+        assertEquals(10, isbn.length());
+
+    }
+
 
     @Test
     public void checkAValidISBNfor10digitNumber(){
